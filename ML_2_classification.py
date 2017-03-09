@@ -4,6 +4,14 @@ import numpy as np
 
 from sklearn.datasets import load_iris
 
+
+def is_virginica_test(fi, t, reverse, example):
+    "Apply threshold model to a new example"
+    test = example[fi] > t
+    if reverse:
+        test = not test
+    return test
+
 data = load_iris()
 
 features = data.data
@@ -98,7 +106,18 @@ for fi in range(features.shape[1]):
 
 print(best_acc, best_fi, best_t, best_reverse)
 
+from threshold import fit_model, predict
 
+correct = 0.0
+for ei in range (len(features)):
+    training = np.ones(len(features), bool)
+    training[ei] = False
+    testing = ~training
+    model = fit_model(features[training], is_virginica[training])
+    predictions = predict(model, features[testing])
+    correct += np.sum(predictions == is_virginica[testing])
+acc = correct/float(len(features))
+print("Mean accuracy: {0:.1%}".format(acc))
 
 
 
