@@ -2,6 +2,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 
+'''
 from sklearn.datasets import load_iris
 
 
@@ -33,7 +34,7 @@ for t in range(3):
     plt.scatter(features[target == t, 0], features[target == t, 1],
                 marker=marker, c=c)
     plt.show()
-
+'''
 
 '''
 fig, axes = plt.subplots(2, 3)
@@ -65,7 +66,7 @@ fig.tight_layout()
 fig.savefig('figure1.jpg')
 '''
 
-
+'''
 labels = target_names[target]
 
 plength = features[:, 2]
@@ -118,8 +119,9 @@ for ei in range (len(features)):
     correct += np.sum(predictions == is_virginica[testing])
 acc = correct/float(len(features))
 print("Mean accuracy: {0:.1%}".format(acc))
+'''
 
-
+####################SEEDS#########################
 
 
 
